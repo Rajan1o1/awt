@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quotes</title>
+</head>
+<body>
+  <h1>Quotes</h1>
+  <ul id="quoteList"></ul>
+
+  <script>
+    fetch('/api/quotes')
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById('quoteList');
+        data.forEach(q => {
+          const li = document.createElement('li');
+          li.textContent = `"${q.text}" - ${q.author}`;
+          list.appendChild(li);
+        });
+      });
+  </script>
+</body>
+</html>
 
